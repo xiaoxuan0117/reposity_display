@@ -10,12 +10,16 @@ export default function Users() {
 
     async function showUserRepos(user){
         console.log('show user repos', user);
-        const response = await  octokit.request('GET /users/{username}/repos', {
+        const response = await octokit.request('GET /users/{username}/repos', {
             username: user,
-            per_page: 1,
+            per_page: 10,
             page:1
         })
-        console.log(response);
+        navigate(`${user}/repos`,{
+            state:{
+                userRepos: response.data
+            }
+        })
     }
     
     return (

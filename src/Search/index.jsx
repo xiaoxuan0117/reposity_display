@@ -1,44 +1,44 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Octokit, App } from 'octokit'
 
 
 export default function Search() {
 
-const octokit = new Octokit()
-const navigate = useNavigate()
+    const octokit = new Octokit()
+    const navigate = useNavigate()
+    const [inputName, setInputName] = useState()
 
-async function search(event){
-    event.preventDefault(); //防止在路徑加上"/?"
-    console.log('into search')
+    async function search(event){
+        event.preventDefault(); //防止在路徑加上"/?"
+        console.log('into search')
 
 
-    const response = await  octokit.request('GET /search/users?', {
-        q:'xiaoxuan',
-        per_page: 10
-    })
+        const response = await  octokit.request('GET /search/users?', {
+            q:inputName,
+            per_page: 10
+        })
 
-    // const response = await  octokit.request('GET /rate_limit')
+        navigate('users',{
+            state:{
+                users: response.data.items
+            }
+        })
+    } 
 
-    navigate('users',{
-        state:{
-            users: response.data.items
-        }
-    })
-
-    // console.log(response.data.items);
-    // console.log(response);
-} 
+    function upInputValue(event){
+        setInputName(event.target.value)
+    }
     
-  return (
-    <div>
-        <form onSubmit={event=>search(event)}>
-            <label>
-                用戶查詢
-                <input type="text" placeholder='輸入' />
-            </label>
-            <input type="submit" value={'查詢'} />
-        </form>
-    </div>
-  )
+    return (
+        <div>
+            <form onSubmit={event=>search(event)}>
+                <label>
+                    用戶查詢
+                    <input type="text" placeholder='輸入' onChange={event=>upInputValue(event)}/>
+                </label>
+                <input type="submit" value={'查詢'} />
+            </form>
+        </div>
+    )
 }
