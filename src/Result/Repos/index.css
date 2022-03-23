@@ -1,0 +1,64 @@
+.userInfo{
+    margin-top: 140px;
+    width: 100%;
+}
+.userInfo .content{
+    width: 60%;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+}
+.userInfo .imgbox{
+    width: 20%;
+    margin: 0;
+}
+.userInfo .username{
+    margin-left: 20px;
+}
+.repoCard{
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 1px 3px #c7c7c7;
+    padding: 20px 40px;
+    transition: all 0.3s;
+}
+.repoCard:hover{
+    box-shadow: 0 1px 10px #c7c7c7;
+}
+
+.repo .content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.star{
+    float: left;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.star_img{
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+    opacity: 0.9;
+    margin-right: 5px;
+}
+.watcher{
+    float: left;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+.watcher_img{
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+    opacity: 0.9;
+    margin-right: 5px;
+}
+.to_bottom{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}

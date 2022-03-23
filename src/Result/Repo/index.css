@@ -1,0 +1,35 @@
+.singleRepoPage .userInfo .content{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.imgAndName{
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.imgAndName .imgbox{
+    width: 10%;
+}
+.repoLink a{
+    display: flex;
+    align-items: center;
+}
+.repoLink a:hover{
+    color: #c7c7c7;
+}
+.repoLink a:hover .linkText{
+    background-color: #c7c7c7;
+    color: #fefefe;
+
+}
+.linkText{
+    border: 1px solid #c7c7c7;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-left: 10px;
+    padding: 2px 4px;
+    line-height: 12px;
+    transition: all 0.3s;
+}

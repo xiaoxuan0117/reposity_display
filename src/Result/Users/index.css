@@ -1,0 +1,39 @@
+.users{
+    margin-top: 140px;
+}
+.user_card{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 3px #c7c7c7;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.user_card:hover{
+    box-shadow: 0 1px 10px #c7c7c7;
+}
+.user_card .content{
+    width: 80%;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.imgbox{
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.username{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.noUser{
+    text-align: center;
+}
+.noUser .imgbox .image_inner .img{
+    border-radius: 0%;
+}

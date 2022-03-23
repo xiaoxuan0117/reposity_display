@@ -1,0 +1,33 @@
+.search_bar{
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    background-color: #fefefe;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 1px 4px #c7c7c7;
+}
+
+.search_form{
+    width: 290px;
+    margin: 0 auto;
+    padding: 5px 0;
+    border-bottom: 1px solid rgb(112, 112, 112, 0.6);
+}
+.search_input{
+    width: 250px;
+    border: 0;
+    color: #707070;
+}
+.search_input:focus{
+    outline: none;
+}
+.search_submit{
+    border: 0;
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    background-image: url(../image/search.png);
+    background-size: cover;
+}

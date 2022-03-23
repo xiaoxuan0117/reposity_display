@@ -1,26 +1,31 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Octokit, App } from 'octokit'
+import './index.css'
 
 
 export default function Search() {
 
-    const octokit = new Octokit()
+    const octokit = new Octokit({
+        auth: "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"
+    })
     const navigate = useNavigate()
     const [inputName, setInputName] = useState()
 
     async function search(event){
         event.preventDefault(); //防止在路徑加上"/?"
-        console.log('into search')
+        // console.log('into search')
 
 
         const response = await  octokit.request('GET /search/users?', {
             q:inputName,
-            per_page: 10
+            per_page: 30,
+            page:1
         })
 
         navigate('users',{
             state:{
+                inputName:inputName,
                 users: response.data.items
             }
         })
@@ -31,14 +36,15 @@ export default function Search() {
     }
     
     return (
-        <div>
-            <form onSubmit={event=>search(event)}>
-                <label>
-                    用戶查詢
-                    <input type="text" placeholder='輸入' onChange={event=>upInputValue(event)}/>
-                </label>
-                <input type="submit" value={'查詢'} />
-            </form>
+        <div className='search_bar'>
+            <div className='search_form'>
+                <form onSubmit={event=>search(event)}>
+                        <label>
+                            <input className='search_input' type="text" onChange={event=>upInputValue(event)}/>
+                        </label>
+                        <input className='search_submit' type="submit" value={' '} />
+                </form>
+            </div>
         </div>
     )
 }
