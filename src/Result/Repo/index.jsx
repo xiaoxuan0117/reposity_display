@@ -1,14 +1,14 @@
 import React from 'react'
 import {useLocation, useParams} from 'react-router-dom'
-import { Octokit, App } from 'octokit'
 import starImg from "../../image/star.png"
 import eyeImg from "../../image/eye.png"
 import './index.css'
 
 export default function Repo() {
+  //取得隨轉換路由一起傳過來的數據
   const {state:{repoData}} = useLocation()
+  //取得隨轉換路由一起傳過來的數據
   const {repo} = useParams()
-  // console.log(repoData)
 
   return (
     <div>
@@ -42,16 +42,11 @@ export default function Repo() {
           </div>
         </div>
         <div className="row justify-content-center">
-          <div className="col-9">
-            <div className="contect">
-                {/* <div className="repoLink">
-                  <a href={`${repoData.html_url}`} target="_blank">
-                  <h4>{repo}</h4>
-                  <span className='linkText'>link to github page</span></a>
-                </div> */}
+          <div className="col-12 col-sm-9">
+            <div className="repo_content">
                 <div className="repoLink">
                   <h3>
-                    <a href={`${repoData.html_url}`} target="_blank">{repo}<span className='linkText'>link to github</span></a>
+                    <a href={`${repoData.html_url}`} target="_blank" rel="noreferrer"><span className='repoName'>{repo}</span><span className='linkText'>link to github</span></a>
                   </h3>
                 </div>
               <p>description : </p>

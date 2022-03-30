@@ -5,7 +5,7 @@ import './App.css'
 export default function Start() {
   return (
     <div className="start">
-      <h3>Please enter the username in search bar</h3>
+      <h3>Please enter username in search bar</h3>
       <div className="title">
         <div className="imgbox">
             <div className="image_inner">

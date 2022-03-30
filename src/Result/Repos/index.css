@@ -2,11 +2,22 @@
     margin-top: 140px;
     width: 100%;
 }
+@media(max-width:425px){
+    .userInfo{
+        margin-top: 90px;
+    }
+}
 .userInfo .content{
     width: 60%;
     margin: 20px;
     display: flex;
     align-items: center;
+}
+@media(max-width:425px){
+    .userInfo .content{
+        width: 100%;
+        margin: 0;
+    }
 }
 .userInfo .imgbox{
     width: 20%;
@@ -22,14 +33,31 @@
     padding: 20px 40px;
     transition: all 0.3s;
 }
+@media(max-width:576px){
+    .repoCard{
+        padding: 10px 20px;
+    }
+}
+@media(max-width:425px){
+    .repoCard{
+        padding: 5px 15px;
+    }
+}
 .repoCard:hover{
     box-shadow: 0 1px 10px #c7c7c7;
 }
-
+.repoCard .full_name{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
 .repo .content{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.repo .count{
+    display: flex;
 }
 .star{
     float: left;

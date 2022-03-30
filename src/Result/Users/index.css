@@ -32,6 +32,7 @@
     text-overflow:ellipsis;
 }
 .noUser{
+    margin-top: 140px;
     text-align: center;
 }
 .noUser .imgbox .image_inner .img{

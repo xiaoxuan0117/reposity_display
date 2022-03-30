@@ -1,36 +1,42 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-import { Octokit, App } from 'octokit'
+import { Octokit } from 'octokit'
 import './index.css'
 
 
 export default function Search() {
-
-    const octokit = new Octokit({
-        auth: "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"
-    })
+    const octokit = new Octokit()
     const navigate = useNavigate()
     const [inputName, setInputName] = useState()
 
     async function search(event){
-        event.preventDefault(); //防止在路徑加上"/?"
-        // console.log('into search')
+        event.preventDefault(); //不要發送form
 
-
+        //請求api，根據用戶名稱查詢
         const response = await  octokit.request('GET /search/users?', {
             q:inputName,
             per_page: 30,
             page:1
         })
 
+        //取得資料後切換路由並傳遞資料
         navigate('users',{
             state:{
                 inputName:inputName,
                 users: response.data.items
             }
         })
+
+        //如果請求結果有用戶就重新整理，把原本的結果清空
+        if(response.data.items.length !== 0){
+            window.location.reload()
+        }else{
+            //如果請求結果查無用戶用切換到柴無用戶的路由
+            navigate('findNoUser')
+        }
     } 
 
+    //搜尋欄內容改變的話要輸入的name也要更新
     function upInputValue(event){
         setInputName(event.target.value)
     }
