@@ -55,7 +55,10 @@ export default function Users() {
                 //回傳這次請求的結果長度(主要用在後面去判斷說這次請求的數量)
                 return data.length
             }catch(e){
-                alert("HttpError: API rate limit exceeded. Please refresh the page and search user with more specific keyword.")
+                //如果請求超過api可請求上限
+                alert("HttpError: API rate limit exceeded. Click OK will redirect to first page.Please wait for 20 seconds and search user with more specific keyword")
+                //請求後切換路由到首頁
+                navigate('/')
                 return 0
             }
         }
