@@ -40,19 +40,24 @@ export default function Users() {
         //當頁面滾動到底部的時候就再次請求api，把更多用戶顯示出來
         async function addUsers(){
             const octokit = new Octokit()
-            const response = await  octokit.request('GET /search/users?', {
-                q:inputName,
-                per_page: 30,
-                page:page
-            })
-            //用戶資料在結果的data的items裡面
-            const data = response.data.items
-            //把結果放到moreUsers裡面，讓return的地方去更新
-            setMoreUsers(moreUsers=>[...moreUsers,...data])
-            //page加1，下次請求api就會取得再下一組的用戶資料
-            setPage(page+1)
-            //回傳這次請求的結果長度(主要用在後面去判斷說這次請求的數量)
-            return data.length
+            try{
+                const response = await octokit.request('GET /search/users?', {
+                    q:inputName,
+                    per_page: 30,
+                    page:page
+                })
+                //用戶資料在結果的data的items裡面
+                const data = response.data.items
+                //把結果放到moreUsers裡面，讓return的地方去更新
+                setMoreUsers(moreUsers=>[...moreUsers,...data])
+                //page加1，下次請求api就會取得再下一組的用戶資料
+                setPage(page+1)
+                //回傳這次請求的結果長度(主要用在後面去判斷說這次請求的數量)
+                return data.length
+            }catch(e){
+                alert("HttpError: API rate limit exceeded. Please refresh the page and search user with more specific keyword.")
+                return 0
+            }
         }
 
         //表示有render成功

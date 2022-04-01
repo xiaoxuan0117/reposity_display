@@ -43,19 +43,24 @@ export default function Repos() {
     //當頁面滾動到底部的時候就再次請求api，把更多倉庫顯示出來
     async function addRepos(){
       const octokit = new Octokit()
-      const response = await octokit.request('GET /users/{username}/repos', {
-          username: username,
-          per_page: 10,
-          page:page
-      })
-      //用戶資料在結果的data裡面
-      const data = response.data
-      //把結果放到moreRepos裡面，讓return的地方去更新
-      setMoreRepos(moreRepos=>[...moreRepos,...data])
-      //page加1，下次請求api就會取得再下一組的用戶資料
-      setPage(page+1)
-      //回傳這次請求的結果長度(主要用在後面去判斷說這次請求的數量)
-      return data.length
+      try{
+        const response = await octokit.request('GET /users/{username}/repos', {
+            username: username,
+            per_page: 10,
+            page:page
+        })
+        //用戶資料在結果的data裡面
+        const data = response.data
+        //把結果放到moreRepos裡面，讓return的地方去更新
+        setMoreRepos(moreRepos=>[...moreRepos,...data])
+        //page加1，下次請求api就會取得再下一組的用戶資料
+        setPage(page+1)
+        //回傳這次請求的結果長度(主要用在後面去判斷說這次請求的數量)
+        return data.length
+      }catch(e){
+        alert("HttpError: API rate limit exceeded.")
+        return 0
+      }
     }
     
     //表示有render成功

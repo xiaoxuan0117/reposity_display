@@ -11,7 +11,7 @@ export default function FindNoUser() {
                     <div className="img" style={{backgroundImage: `url(${cat})`}}></div>
                 </div>
             </div>
-            <h4>find no user</h4>
+            <h4>no user found</h4>
         </div>
       </div>
     </div>
