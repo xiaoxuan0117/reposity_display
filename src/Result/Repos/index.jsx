@@ -21,6 +21,8 @@ export default function Repos() {
   const [end, setEnd] = useState(false)
   //判斷是否有render
   const [isRender, setIsRender] = useState(true)
+  //判斷是否是初次進入頁面(要讓頁面滾到最頂端)
+  const [isFirst, setIsFirst] = useState(true)
   const navigate = useNavigate()
 
   //點選倉庫之後請求api取得特定倉庫的資料
@@ -37,7 +39,6 @@ export default function Repos() {
         }
     })
   }
-
 
   useEffect(()=>{
     //當頁面滾動到底部的時候就再次請求api，把更多倉庫顯示出來
@@ -65,6 +66,12 @@ export default function Repos() {
     
     //表示有render成功
     setIsRender(true)
+    //如果是第一次進入頁面就移動到最上面
+    if(isFirst === true){
+      window.scrollTo(0, 0)
+      console.log('here');
+      setIsFirst(false)
+    }
     //判斷從search傳來的用戶資料內容
     //如果資料小於10個
     if(userRepos.length<10){
@@ -105,11 +112,11 @@ export default function Repos() {
       }
     }
 
-    //在頁面要unmount的時候把isRender設定為false，讓addUser()不會再更改state內容
+    //在離開的時候把isRender設定為false，讓addUser()不會再更改state內容
     return function cleanup(){
       setIsRender(false)
     }
-  },[userRepos, request, isRender, page, username])
+  },[userRepos, request, isRender, isFirst, page, username])
 
   return (
     <div>
