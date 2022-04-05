@@ -1,5 +1,5 @@
 import React from 'react'
-import {useLocation, useParams} from 'react-router-dom'
+import {useLocation} from 'react-router-dom'
 import starImg from "../../image/star.png"
 import eyeImg from "../../image/eye.png"
 import './index.css'
@@ -7,8 +7,6 @@ import './index.css'
 export default function Repo() {
   //取得隨轉換路由一起傳過來的數據
   const {state:{repoData}} = useLocation()
-  //取得隨轉換路由一起傳過來的數據
-  const {repo} = useParams()
 
   return (
     <div>
@@ -46,7 +44,7 @@ export default function Repo() {
             <div className="repo_content">
                 <div className="repoLink">
                   <h3>
-                    <a href={`${repoData.html_url}`} target="_blank" rel="noreferrer"><span className='repoName'>{repo}</span><span className='linkText'>link to github</span></a>
+                    <a href={`${repoData.html_url}`} target="_blank" rel="noreferrer"><span className='repoName'>{repoData.full_name}</span><span className='linkText'>link to github</span></a>
                   </h3>
                 </div>
               <p>description : </p>

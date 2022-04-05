@@ -142,7 +142,7 @@ export default function Repos() {
                   <div key={userReposObj.id} className='repoCard col-12 col-lg-9' onClick={()=>showRepo(userReposObj.name)}>
                       <div className="repo">
                         <div className="content">
-                          <h4 className="full_name">{userReposObj.full_name}</h4>
+                          <h4 className="full_name">{userReposObj.name}</h4>
                             <div className="count">
                               <div className='star'>
                                 <div className="star_img" style={{backgroundImage: `url(${starImg})`}}></div>
